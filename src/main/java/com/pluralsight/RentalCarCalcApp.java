@@ -29,7 +29,7 @@ public class RentalCarCalcApp {
         int userAge = myScanner.nextInt();
 
         //Initialize car rent variable and calculate it, surcharge, and options
-        double basePrice = 29.99 * numberDays;
+        double basePrice = calculateBasePrice(numberDays);
         double rentSurcharge = 0.3;
         double optionCost = 0.0;
         double tagPrice = 3.95;
@@ -61,6 +61,12 @@ public class RentalCarCalcApp {
         //initialize a total cost variable and store the value we got from our calculation
         double totalCost = basePrice;
         System.out.printf("Your total will be: $%.2f", totalCost);
+
+    }
+
+    public static double calculateBasePrice(int numDays) {
+
+        return 29.99 * numDays;
 
     }
 }
