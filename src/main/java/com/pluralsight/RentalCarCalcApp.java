@@ -34,7 +34,6 @@ public class RentalCarCalcApp {
         double rentSurcharge = 0.3;
         displayTotals(basePrice, optionCost, rentSurcharge, userAge);
 
-
     }
 
     public static double calculateBasePrice(int numDays) {
