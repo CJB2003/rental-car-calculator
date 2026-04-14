@@ -30,22 +30,10 @@ public class RentalCarCalcApp {
 
         //Initialize car rent variable and calculate it, surcharge, and options
         double basePrice = calculateBasePrice(numberDays);
-        double rentSurcharge = 0.3;
         double optionCost = calculateOptionCost(tagQuestion, gpsQuestion, roadsideQuestion, numberDays);
+        double rentSurcharge = 0.3;
+        displayTotals(basePrice, optionCost, rentSurcharge, userAge);
 
-        //If user under 25, they receive a surcharge
-        if (userAge < 25) {
-            System.out.println("You're underaged so there is a surcharge with your total price.");
-            basePrice = basePrice + (basePrice * rentSurcharge) + optionCost;
-        }
-        //Otherwise, they pay for regular price including any option costs
-        else {
-            System.out.println("You pay for base price and any other option costs.");
-            basePrice = basePrice + optionCost;
-        }
-        //initialize a total cost variable and store the value we got from our calculation
-        double totalCost = basePrice;
-        System.out.printf("Your total will be: $%.2f", totalCost);
 
     }
 
@@ -73,5 +61,21 @@ public class RentalCarCalcApp {
         System.out.printf("%.2f\n", optionCost);
 
         return optionCost;
+    }
+
+    public static void displayTotals(double basePrice, double optionCost, double rentSurcharge, int userAge) {
+        //If user under 25, they receive a surcharge
+        if (userAge < 25) {
+            System.out.println("You're underaged so there is a surcharge with your total price.");
+            basePrice = basePrice + (basePrice * rentSurcharge) + optionCost;
+        }
+        //Otherwise, they pay for regular price including any option costs
+        else {
+            System.out.println("You pay for base price and any other option costs.");
+            basePrice = basePrice + optionCost;
+        }
+        //initialize a total cost variable and store the value we got from our calculation
+        double totalCost = basePrice;
+        System.out.printf("Your total will be: $%.2f", totalCost);
     }
 }
