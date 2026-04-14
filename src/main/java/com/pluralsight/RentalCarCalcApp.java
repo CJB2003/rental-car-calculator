@@ -31,22 +31,7 @@ public class RentalCarCalcApp {
         //Initialize car rent variable and calculate it, surcharge, and options
         double basePrice = calculateBasePrice(numberDays);
         double rentSurcharge = 0.3;
-        double optionCost = 0.0;
-        double tagPrice = 3.95;
-        double gpsPrice = 2.95;
-        double roadsidePrice = 3.95;
-
-        if (tagQuestion.equalsIgnoreCase("Yes")) {
-            optionCost += tagPrice;
-        }
-        if (gpsQuestion.equalsIgnoreCase("Yes")) {
-            optionCost += gpsPrice;
-        }
-        if (roadsideQuestion.equalsIgnoreCase("Yes")) {
-            optionCost += roadsidePrice;
-        }
-        optionCost *= numberDays;
-        System.out.printf("%.2f\n", optionCost);
+        double optionCost = calculateOptionCost(tagQuestion, gpsQuestion, roadsideQuestion, numberDays);
 
         //If user under 25, they receive a surcharge
         if (userAge < 25) {
@@ -67,6 +52,26 @@ public class RentalCarCalcApp {
     public static double calculateBasePrice(int numDays) {
 
         return 29.99 * numDays;
+    }
 
+    public static double calculateOptionCost(String tollTag, String GPS, String RA, int numDays) {
+        double optionCost = 0;
+        double tagPrice = 3.95;
+        double gpsPrice = 2.95;
+        double roadsidePrice = 3.95;
+
+        if (tollTag.equalsIgnoreCase("Yes")) {
+            optionCost += tagPrice;
+        }
+        if (GPS.equalsIgnoreCase("Yes")) {
+            optionCost += gpsPrice;
+        }
+        if (RA.equalsIgnoreCase("Yes")) {
+            optionCost += roadsidePrice;
+        }
+        optionCost *= numDays;
+        System.out.printf("%.2f\n", optionCost);
+
+        return optionCost;
     }
 }
